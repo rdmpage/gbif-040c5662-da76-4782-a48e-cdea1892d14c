@@ -52,7 +52,7 @@ $filenames=array(
 
 // Any records that validator flags
 $ignore = array(
-'ARSO475-09'
+'http://bins.boldsystems.org/index.php/Public_RecordView?processid=ARSO475-09'
 );
 
 $data_dir = dirname(dirname(__FILE__)) . '/data/api'; 
