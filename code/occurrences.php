@@ -134,28 +134,34 @@ foreach ($filenames as $filename)
 				}
 			}
 			
-			// clean
-			$obj->occurrenceID = str_replace('.COI-5P', '', $obj->occurrenceID);
-			
-			//print_r($obj);
-			
-			$row_to_export = array();
-			
-			foreach ($keys_to_export as $k)
+			if ($n > 1)
 			{
-				if (isset($obj->{$k}))
+			
+				// clean
+				$obj->occurrenceID = str_replace('.COI-5P', '', $obj->occurrenceID);
+			
+				// make URL
+				$obj->occurrenceID = 'http://bins.boldsystems.org/index.php/Public_RecordView?processid=' . $obj->occurrenceID;
+			
+				//print_r($obj);
+			
+				$row_to_export = array();
+			
+				foreach ($keys_to_export as $k)
 				{
-					$row_to_export[] = $obj->{$k};
+					if (isset($obj->{$k}))
+					{
+						$row_to_export[] = $obj->{$k};
+					}
+					else
+					{
+						$row_to_export[] = '';
+					}
 				}
-				else
-				{
-					$row_to_export[] = '';
-				}
-			}
 			
-			echo join("\t", $row_to_export) . "\n";
+				echo join("\t", $row_to_export) . "\n";
 			
-			
+			}			
 
 			
 			

@@ -106,9 +106,12 @@ foreach ($filenames as $filename)
 								$media = new stdclass;
 				
 								// $media->occurrenceID = $id;
-								$media->occurrenceID = $obj->occurrenceID; 
+								$media->occurrenceID = $obj->occurrenceID;
 								$media->title = $obj->occurrenceID;
-			
+								
+								// make URL
+								$media->occurrenceID = 'http://bins.boldsystems.org/index.php/Public_RecordView?processid=' . $media->occurrenceID;
+											
 								$media->identifier = $image_urls[$j];
 								// some URLs have # symbol (why?)
 								$media->identifier = str_replace('#', '%23', $media->identifier);
