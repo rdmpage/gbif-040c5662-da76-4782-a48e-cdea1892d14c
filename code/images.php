@@ -50,6 +50,11 @@ $filenames=array(
 'api-iBOL_phase_0.50_COI.tsv'
 );
 
+// Any records that validator flags
+$ignore = array(
+'ARSO475-09'
+);
+
 $data_dir = dirname(dirname(__FILE__)) . '/data/api'; 
 
 // header row
@@ -202,21 +207,25 @@ foreach ($filenames as $filename)
 			{
 				foreach ($obj->associatedMedia as $media)
 				{
-					$row_to_export = array();
-			
-					foreach ($keys_to_export as $k)
+					if (!in_array($media->occurrenceID, $ignore))
 					{
-						if (isset($media->{$k}))
-						{
-							$row_to_export[] = $media->{$k};
-						}
-						else
-						{
-							$row_to_export[] = '';
-						}
-					}
+				
+						$row_to_export = array();
 			
-					echo join("\t", $row_to_export) . "\n";
+						foreach ($keys_to_export as $k)
+						{
+							if (isset($media->{$k}))
+							{
+								$row_to_export[] = $media->{$k};
+							}
+							else
+							{
+								$row_to_export[] = '';
+							}
+						}
+			
+						echo join("\t", $row_to_export) . "\n";
+					}
 				}
 			}
 			
