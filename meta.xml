@@ -29,6 +29,8 @@
 	<field index="20" term="http://rs.tdwg.org/dwc/terms/stateProvince"/>
 	<field index="21" term="http://rs.tdwg.org/dwc/terms/country"/>
 	<field index="22" term="http://rs.tdwg.org/dwc/terms/associatedSequences"/>
+
+	<field index="23" term="http://rs.tdwg.org/dwc/terms/typeStatus"/>
     
     <!-- defaults -->
 
