@@ -7,7 +7,7 @@
 	<key>bodyString</key>
 	<string>{
   "type":"DWC_ARCHIVE",
-  "url":"https://dl.dropboxusercontent.com/u/639486/ibol-dwca.zip"
+  "url":"https://dl.dropboxusercontent.com/u/639486/ibol-all.zip"
 }</string>
 	<key>followRedirect</key>
 	<true/>

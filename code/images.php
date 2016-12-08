@@ -46,16 +46,26 @@ $keys_to_export = array(
 	'license'
 );
 
-$filenames=array(
-'api-iBOL_phase_0.50_COI.tsv'
-);
-
 // Any records that validator flags
 $ignore = array(
 'http://bins.boldsystems.org/index.php/Public_RecordView?processid=ARSO475-09'
 );
 
 $data_dir = dirname(dirname(__FILE__)) . '/data/api'; 
+
+// process all files
+$filenames = array();
+$list = scandir($data_dir);
+foreach ($list as $filename)
+{
+	if (preg_match('/\.tsv$/', $filename))
+	{
+		$filenames[] = $filename;
+	}
+}
+
+// process one file
+//$filenames=array('api-iBOL_phase_0.50_COI.tsv');
 
 // header row
 echo join("\t", $keys_to_export) . "\n";

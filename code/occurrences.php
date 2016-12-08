@@ -4,10 +4,6 @@
 
 ini_set("auto_detect_line_endings", true); // vital because some files have Windows ending
 
-$filenames=array(
-'iBOL_phase_0.50_COI.tsv'
-);
-
 $bold_to_dc = array(
 
 	'processid' => 'occurrenceID',
@@ -94,6 +90,24 @@ if (0)
 
 $data_dir = dirname(dirname(__FILE__)) . '/data'; 
 
+// process all files
+$filenames = array();
+$list = scandir($data_dir);
+foreach ($list as $filename)
+{
+	if (preg_match('/\.tsv$/', $filename))
+	{
+		$filenames[] = $filename;
+	}
+}
+
+// process one file
+//$filenames=array('iBOL_phase_0.50_COI.tsv');
+
+// Duplicate record counter
+$counter['ASPND567-09'] = 0;
+$ignore = false;
+
 // header row
 echo join("\t", $keys_to_export) . "\n";
 
@@ -138,9 +152,17 @@ foreach ($filenames as $filename)
 			
 			if ($n > 1)
 			{
+				$ignore = false;
 			
 				// clean
 				$obj->occurrenceID = str_replace('.COI-5P', '', $obj->occurrenceID);
+				
+				if ($obj->occurrenceID == 'ASPND567-09')
+				{
+					$counter['ASPND567-09']++;
+					
+					$ignore = ($counter['ASPND567-09'] > 1);
+				}
 			
 				// make URL
 				$obj->occurrenceID = 'http://bins.boldsystems.org/index.php/Public_RecordView?processid=' . $obj->occurrenceID;
@@ -395,8 +417,10 @@ foreach ($filenames as $filename)
 					}
 				*/
 				
-			
-				echo join("\t", $row_to_export) . "\n";
+				if (!$ignore)
+				{
+					echo join("\t", $row_to_export) . "\n";
+				}
 			
 			}			
 

@@ -59,7 +59,7 @@ I then generated a meta.xml file, and finally the Darwin Core Archive (DwC-A) (w
 zip ibol-dwca.zip eml.xml meta.xml occurrences.tsv media.tsv
 ```
 
-Next we need to check that the DwC-A file is valid using the [Darwin Core Archive Validator](http://tools.gbif.org/dwca-validator/).
+Next we need to check that the DwC-A file is valid using the [Darwin Core Archive Validator]().http://tools.gbif.org/dwca-validator/
 
 ## Step 3 Create endpoint
 
