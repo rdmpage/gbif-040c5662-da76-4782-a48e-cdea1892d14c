@@ -1,7 +1,7 @@
 .DS_Store
 
-data/*
-!data/fetch.sh
+data/__MACOSX
+#!data/fetch.sh
 
 media-all.tsv
 occurrences-all.tsv
